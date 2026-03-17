@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+</head>
+<body ng-app>
+<center>
+<b>AIM: Write a Program to perform validation of College details form using AngularJS.</b>
+<br><br>
+<form name="Collegeform" novalidate>
+<table border="0">
+<tr>
+<td colspan="2"><b>Enter College Details:</b></td>
+</tr>
+<tr>
+<td>College Name:</td>
+<td>
+<input type="text" name="clgname" ng-model="obj.clgname" ng-required="true"/>
+<span ng-show="Collegeform.clgname.$touched && Collegeform.clgname.$error.required">College name is required</span>
+</td>
+</tr>
+<tr>
+<td>Contact Number:</td>
+<td>
+<input type="text" name="contact" ng-model="obj.contact" ng-minlength="8" ng-maxlength="10" ng-required="true"/>
+<span ng-show="Collegeform.contact.$touched && Collegeform.contact.$error.minlength">Minimum 8 characters required</span>
+<span ng-show="Collegeform.contact.$touched && Collegeform.contact.$error.maxlength">Maximum 10 characters allowed</span>
+<span ng-show="Collegeform.contact.$touched && Collegeform.contact.$error.required">Contact number is required</span>
+</td>
+</tr>
+<tr>
+<td>Address:</td>
+<td>
+<input type="text" name="address" ng-model="obj.address" ng-required="true"/>
+<span ng-show="Collegeform.address.$touched && Collegeform.address.$error.required">Address is required</span>
+</td>
+</tr>
+<tr>
+<td>Email:</td>
+<td>
+<input type="email" name="email" ng-model="obj.email" ng-required="true"/>
+<span ng-show="Collegeform.email.$touched && Collegeform.email.$error.required">Email is required</span>
+<span ng-show="Collegeform.email.$touched && Collegeform.email.$error.email">Please enter a valid email</span>
+</td>
+</tr>
+<tr>
+<td><input type="submit" value="Submit"/></td>
+<td><input type="reset" value="Clear"/></td>
+</tr>
+</table>
+</form>
+</center>
+</body>
+</html>

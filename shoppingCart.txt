@@ -1,0 +1,52 @@
+<html ng-app="cartApp">
+<head>
+<title>AngularJS Shopping Cart</title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.0/angular.min.js"></script>
+</head>
+<body ng-controller="CartController">
+<h2>Shopping Cart Application</h2>
+Product Name:
+<input type="text" ng-model="productname">
+Price:
+<input type="number" ng-model="productprice">
+<button ng-click="addToCart()">Add To Cart</button>
+<table border="1">
+<tr>
+<th>Product</th>
+<th>Price</th>
+<th>Action</th>
+</tr>
+<tr ng-repeat="additem in cart">
+<td>{{additem.name}}</td>
+<td>{{additem.price}}</td>
+<td><button ng-click="removeitem($index)">Remove</button></td>
+</tr>
+</table>
+<h3>Total Amount: {{getTotal()}}</h3>
+<script>
+angular.module("cartApp", []).controller("CartController", function($scope) {
+$scope.cart = [];
+$scope.addToCart = function() {
+if($scope.productname && $scope.productprice) {
+$scope.cart.push({
+name: $scope.productname,
+price: $scope.productprice
+});
+$scope.productname = "";
+$scope.productprice = "";
+}
+};
+$scope.removeitem = function(index) {
+$scope.cart.splice(index, 1);
+};
+$scope.getTotal = function() {
+var total = 0;
+angular.forEach($scope.cart, function(item) {
+total += item.price;
+});
+return total;
+};
+});
+</script>
+</body>
+</html>

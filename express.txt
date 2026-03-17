@@ -1,0 +1,37 @@
+var express = require('express');
+var readline = require('readline');
+var app = express();
+
+var rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout
+});
+
+let name, roll, grade;
+
+rl.question("Enter Name: ", function(n) {
+    name = n;
+    rl.question("Enter Roll No: ", function(r) {
+        roll = r;
+        rl.question("Enter Grade: ", function(g) {
+            grade = g;
+            rl.close();
+
+            app.use(function(req, res, next){
+                console.log("Roll No:", roll);
+                next();
+            });
+
+            app.get('/', function(req, res, next){
+                res.send("Grade: " + grade);
+                next();
+            });
+
+            app.use('/', function(req, res){
+                console.log("Name:", name);
+            });
+
+            app.listen(3000);
+        });
+    });
+});

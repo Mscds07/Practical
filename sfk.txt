@@ -1,0 +1,61 @@
+import 'dart:io';
+
+class Employee {
+  String name = "";
+  int id = 0;
+
+  void displayEmployee() {
+    print("Employee: $name, ID: $id");
+  }
+}
+
+class CommissionEmployee extends Employee {
+  double sales = 0;
+  double commissionRate = 0;
+
+  double calculateCommission() {
+    return sales * commissionRate;
+  }
+
+  void displayCommission() {
+    displayEmployee();
+    print("Sales: \$${sales}");
+    print("Commission: \$${calculateCommission()}");
+  }
+}
+
+class NetSalaryCalculator extends CommissionEmployee {
+  double baseSalary = 0;
+
+  double calculateNetSalary() {
+    return baseSalary + calculateCommission();
+  }
+
+  void displayNetSalary() {
+    displayCommission();
+    print("Base Salary: \$${baseSalary}");
+    print("Total Net Salary: \$${calculateNetSalary()}");
+  }
+}
+
+void main() {
+  NetSalaryCalculator emp = NetSalaryCalculator();
+
+  print("Enter Employee Name:");
+  emp.name = stdin.readLineSync()!;
+
+  print("Enter Employee ID:");
+  emp.id = int.parse(stdin.readLineSync()!);
+
+  print("Enter Sales Amount:");
+  emp.sales = double.parse(stdin.readLineSync()!);
+
+  print("Enter Commission Rate (example 0.10 for 10%):");
+  emp.commissionRate = double.parse(stdin.readLineSync()!);
+
+  print("Enter Base Salary:");
+  emp.baseSalary = double.parse(stdin.readLineSync()!);
+
+  print("\n------ Employee Salary Details ------");
+  emp.displayNetSalary();
+}

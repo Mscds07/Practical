@@ -1,0 +1,69 @@
+PART ONE
+
+\\ 1
+use inventory;
+
+
+db.createCollection("products");
+
+
+db.products.insert({"productId":001, "description": "mobile", "company": "samsung", "price": 24000});
+
+db.products.insert({"productId":002, "description": "desktop", "company": "hp", "price": 20000});
+
+db.products.insert({"productId":003, "description": "mouse", "company": "zebronics", "price": 4000});
+
+db.products.insert({"productId":004, "description": "speaker", "company": "jbl", "price": 8000});
+
+db.products.insert({"productId":005, "description": "mobile", "company": "samsung", "price": 12000});
+
+\\ 2
+db.products.find({"company": "samsung"}).pretty();
+
+\\ 3
+db.products.find().sort({price: 1}).pretty();
+
+
+db.products.find().sort({price: -1}).pretty();
+
+\\ 4
+
+db.products.find({price: {$gt:15000}}).pretty();
+
+\\ 5
+db.products.update({productId: 1}, {$set:{price: 10000}});
+
+\\ 6
+db.products.find({price: {$lt:10000}},{"productId": 1, "description": 1}).pretty();
+
+\\ 7
+db.products.remove({productId: 1}, 1);
+
+\\ 8
+db.products.drop();
+
+db.dropDatabase();
+
+PART TWO
+
+\\ 1
+use exam;
+
+db.createCollection("result");
+
+db.results.insertMany([{seatno: 1, name: "amr", class: "sycs", marks: 75, grade: "B"},
+					{seatno: 2, name: "messi", class: "tycs", marks: 91, grade: "A"},
+					{seatno: 3, name: "ronaldo", class: "fycs", marks: 60, grade: "C"}
+					{seatno: 4, name: "charles", class: "tycs", marks: 88, grade: "A"}]);
+
+\\ 2
+db.results.find().pretty();
+
+\\ 3
+ db.results.find(marks: {$gt: 50}).pretty();
+
+\\ 4
+db.results.find({class: "tycs"}).sort({marks: 1}).pretty();
+
+\\ 5
+db.results.update({seatno: 2}, {$set:{marks:85}});

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script>
+angular.module("AAD Practical", []);
+</script>
+
+<body ng-app="AAD Practical">
+
+Dog<input type="checkbox" ng-model="myVar1" ng-init="myVar1=true">
+
+Cat<input type="checkbox" ng-model="myVar2" ng-init="myVar2=false">
+
+<div ng-if="myVar1">
+<h1>Animal 1</h1>
+<p>This is a dog</p>
+<img src="https://hips.hearstapps.com/hmg-prod/images/dog-puppy-on-garden-royalty-free-image-1586966191.jpg?crop=0.752xw:1.00xh;0.175xw,0&resize=1200:*" width="300">
+<hr>
+</div>
+
+<div ng-if="myVar2">
+<h1>Animal 2</h1>
+<p>This is a cat</p>
+<img src="https://images.pexels.com/photos/45201/kitty-cat-kitten-pet-45201.jpeg?cs=srgb&dl=pexels-pixabay-45201.jpg&fm=jpg" width="300">
+<hr>
+</div>
+
+</body>
+</html>
+
