@@ -1,0 +1,32 @@
+import 'dart:io';
+
+class Shapes {
+double width = 0;
+double height = 0;
+void displayInfo() {
+print("This is the base shape class");
+}
+}
+
+class Rectangle extends Shapes {
+double area() {
+return width * height;
+}
+@override
+void displayInfo() {
+print("Rectangle: width = $width, height = $height");
+}
+}
+
+void main() {
+Rectangle rect = Rectangle();
+
+print("Enter width:");
+rect.width = double.parse(stdin.readLineSync()!);
+
+print("Enter height:");
+rect.height = double.parse(stdin.readLineSync()!);
+
+rect.displayInfo();
+print("Area of rectangle = ${rect.area()}");
+}
